@@ -64,10 +64,10 @@ namespace HashRandom
         /// </summary>
         public double NextDouble()
         {
-            using (SHA512 md5 = SHA512.Create())
+            using (SHA512 sha512 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
                 cycle++;
 
@@ -100,10 +100,10 @@ namespace HashRandom
         /// </summary>
         public long NextLong()
         {
-            using (SHA512 md5 = SHA512.Create())
+            using (SHA512 sha512 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
                 cycle++;
 
@@ -136,10 +136,10 @@ namespace HashRandom
         /// </summary>
         public int NextInt()
         {
-            using (SHA512 md5 = SHA512.Create())
+            using (SHA512 sha512 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
                 cycle++;
 

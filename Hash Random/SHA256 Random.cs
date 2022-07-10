@@ -64,10 +64,10 @@ namespace HashRandom
         /// </summary>
         public double NextDouble()
         {
-            using (SHA256 md5 = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
                 cycle++;
 
@@ -100,10 +100,10 @@ namespace HashRandom
         /// </summary>
         public long NextLong()
         {
-            using (SHA256 md5 = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
                 cycle++;
 
@@ -136,10 +136,10 @@ namespace HashRandom
         /// </summary>
         public int NextInt()
         {
-            using (SHA256 md5 = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
                 cycle++;
 
