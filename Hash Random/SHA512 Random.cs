@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 namespace HashRandom
 {
     /// <summary>
-    ///  Creates a cryptographically secure random number generator using the MD5 algorithm
+    ///  Creates a cryptographically secure random number generator using the SHA512 algorithm
     /// </summary>
-    public class MD5Random
+    public class SHA512Random
     {
         /// <summary>
         ///  The seed used for generating numbers
@@ -16,41 +16,41 @@ namespace HashRandom
         private long cycle = 0;
 
         /// <summary>
-        ///  Creates a cryptographically secure random number generator using the MD5 algorithm with a double seed
+        ///  Creates a cryptographically secure random number generator using the SHA512 algorithm with a double seed
         /// </summary>
-        public MD5Random(double seed)
+        public SHA512Random(double seed)
         {
             Seed = seed.ToString();
         }
 
         /// <summary>
-        ///  Creates a cryptographically secure random number generator using the MD5 algorithm with an int seed
+        ///  Creates a cryptographically secure random number generator using the SHA512 algorithm with an int seed
         /// </summary>
-        public MD5Random(int seed)
+        public SHA512Random(int seed)
         {
             Seed = seed.ToString();
         }
 
         /// <summary>
-        ///  Creates a cryptographically secure random number generator using the MD5 algorithm with a long seed
+        ///  Creates a cryptographically secure random number generator using the SHA512 algorithm with a long seed
         /// </summary>
-        public MD5Random(long seed)
+        public SHA512Random(long seed)
         {
             Seed = seed.ToString();
         }
 
         /// <summary>
-        ///  Creates a cryptographically secure random number generator using the MD5 algorithm with a string seed
+        ///  Creates a cryptographically secure random number generator using the SHA512 algorithm with a string seed
         /// </summary>
-        public MD5Random(string seed)
+        public SHA512Random(string seed)
         {
             Seed = seed;
         }
 
         /// <summary>
-        ///  Creates a cryptographically secure random number generator using the MD5 algorithm
+        ///  Creates a cryptographically secure random number generator using the SHA512 algorithm
         /// </summary>
-        public MD5Random()
+        public SHA512Random()
         {
             Seed = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString();
         }
@@ -64,7 +64,7 @@ namespace HashRandom
         /// </summary>
         public double NextDouble()
         {
-            using (MD5 md5 = MD5.Create())
+            using (SHA512 md5 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
@@ -100,7 +100,7 @@ namespace HashRandom
         /// </summary>
         public long NextLong()
         {
-            using (MD5 md5 = MD5.Create())
+            using (SHA512 md5 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
@@ -136,7 +136,7 @@ namespace HashRandom
         /// </summary>
         public int NextInt()
         {
-            using (MD5 md5 = MD5.Create())
+            using (SHA512 md5 = SHA512.Create())
             {
                 byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
                 byte[] hashBytes = md5.ComputeHash(inputBytes);

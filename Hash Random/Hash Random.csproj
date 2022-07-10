@@ -2,9 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net48;netstandard2.0</TargetFrameworks>
-    <RootNamespace>Hash_Random</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>DiSaber</Authors>
+    <Description>A small library for generating cryptographically secure random numbers with various hash algorithms. The nature of hash algorithms allows for the generator to be seeded but remain cryptographically secure.</Description>
+    <RepositoryUrl>https://github.com/DiSaber/Hash-Random</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Version>1.0.0</Version>
+    <RootNamespace>HashRandom</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\benam\source\repos\Hash Random\LICENSE.md" Pack="true" PackagePath="LICENSE.md" />
+  </ItemGroup>
 
 </Project>
