@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace HashRandom
 {
@@ -13,7 +13,7 @@ namespace HashRandom
         ///  The seed used for generating numbers
         /// </summary>
         public string Seed { get; }
-        private long cycle = 0;
+        private byte[] lastState { get; set; } = new byte[0];
 
         /// <summary>
         ///  Creates a cryptographically secure random number generator using the SHA512 algorithm with a double seed
@@ -66,10 +66,10 @@ namespace HashRandom
         {
             using (SHA512 sha512 = SHA512.Create())
             {
-                byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
+                byte[] inputBytes = StaticFunctions.Combine(Encoding.ASCII.GetBytes(Seed), lastState);
                 byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
-                cycle++;
+                lastState = hashBytes;
 
                 return (double)Math.Abs(BitConverter.ToInt64(hashBytes, 0)) / long.MaxValue % 1;
             }
@@ -102,10 +102,10 @@ namespace HashRandom
         {
             using (SHA512 sha512 = SHA512.Create())
             {
-                byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
+                byte[] inputBytes = StaticFunctions.Combine(Encoding.ASCII.GetBytes(Seed), lastState);
                 byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
-                cycle++;
+                lastState = hashBytes;
 
                 return BitConverter.ToInt64(hashBytes, 0);
             }
@@ -138,10 +138,10 @@ namespace HashRandom
         {
             using (SHA512 sha512 = SHA512.Create())
             {
-                byte[] inputBytes = Encoding.ASCII.GetBytes($"{cycle}-{Seed}");
+                byte[] inputBytes = StaticFunctions.Combine(Encoding.ASCII.GetBytes(Seed), lastState);
                 byte[] hashBytes = sha512.ComputeHash(inputBytes);
 
-                cycle++;
+                lastState = hashBytes;
 
                 return BitConverter.ToInt32(hashBytes, 0);
             }
